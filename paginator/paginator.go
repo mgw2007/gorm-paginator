@@ -6,7 +6,7 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
-// Param 分页参数
+// Param
 type Param struct {
 	DB      *gorm.DB
 	Page    int
@@ -15,7 +15,7 @@ type Param struct {
 	ShowSQL bool
 }
 
-// Paginator 分页返回
+// Paginator
 type Paginator struct {
 	TotalRecord int         `json:"total_record"`
 	TotalPage   int         `json:"total_page"`
@@ -27,7 +27,7 @@ type Paginator struct {
 	NextPage    int         `json:"next_page"`
 }
 
-// Paging 分页
+// Paging
 func Paging(p *Param, result interface{}) (*Paginator, error) {
 	db := p.DB
 
