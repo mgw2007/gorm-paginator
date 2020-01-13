@@ -71,6 +71,8 @@ e.GET("/", func(c echo.Context) error {
     }
     return ctx.JSON(http.StatusOK, pager)
 })
+```
+
 ## License
 
 [MIT](LICENSE)
