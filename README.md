@@ -46,6 +46,32 @@ r.GET("/", func(c *gin.Context) {
 })
 ```
 
+## With Echo
+
+```go
+    e := echo.New()
+	e.GET("/", func(c echo.Context) error {
+        page, err := strconv.Atoi(ctx.QueryParam("page"))
+		if err != nil {
+			page = 1
+		}
+		limit, err := strconv.Atoi(ctx.QueryParam("limit"))
+		if err != nil {
+			limit = 20
+		}
+        var users []User
+        paginatorr, err := paginator.Paging(&paginator.Param{
+            DB:      db,
+            Page:    pageNumber,
+            Limit:   limit,
+            OrderBy: []string{"id desc"},
+        }, &users)
+        if err != nil {
+            return nil, err
+        }
+        return ctx.JSON(http.StatusOK, pager)
+    })
 ## License
 
 [MIT](LICENSE)
+```
